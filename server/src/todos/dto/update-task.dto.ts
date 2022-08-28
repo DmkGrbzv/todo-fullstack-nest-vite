@@ -1,5 +1,5 @@
-export class UpdateTaskDto{
-  readonly text: string
-  readonly id: string
-  readonly completed: boolean
+/* eslint-disable prettier/prettier */
+export class UpdateTaskDto {
+  readonly text: string;
+  readonly completed: boolean;
 }
