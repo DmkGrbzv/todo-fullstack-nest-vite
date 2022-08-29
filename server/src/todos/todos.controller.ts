@@ -22,6 +22,12 @@ export class TodosController {
   getAllTasks(): Promise<Todo[]> {
     return this.todosService.getAll();
   }
+  @Get('getAll/:completed')
+  getTasksWithCompletedMark(
+    @Param('completed') completed: boolean,
+  ): Promise<Todo[]> {
+    return this.todosService.getTasksWithCompletedMark(completed);
+  }
   @Post('create')
   createTask(@Body() CreateTaskDto: CreateTaskDto) {
     return this.todosService.create(CreateTaskDto);

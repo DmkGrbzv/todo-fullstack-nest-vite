@@ -11,6 +11,9 @@ export class TodosService {
   async getAll(): Promise<Todo[]> {
     return await this.todoModel.find().exec();
   }
+  async getTasksWithCompletedMark(completed?: boolean): Promise<Todo[]> {
+    return await this.todoModel.find({ completed: completed }).exec();
+  }
   async create(taskDto: CreateTaskDto): Promise<Todo> {
     const newTask = new this.todoModel(taskDto);
     return newTask.save();
