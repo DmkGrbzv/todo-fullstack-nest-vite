@@ -11,7 +11,6 @@ import {
 } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-// import { Request, Response } from 'express';
 import { TodosService } from 'src/todos-service/todos-service.service';
 import { Todo } from './shemas/todo.shema';
 
