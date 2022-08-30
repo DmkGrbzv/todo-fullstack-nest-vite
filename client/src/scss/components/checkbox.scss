@@ -1,0 +1,30 @@
+.default-checkbox{
+  display: none;
+  &-wrapper{
+    width: 100px;
+  }
+}
+.checkbox{
+    display: inline-block;
+    height: 20px;
+    width: 20px;  
+    border: 2px solid #67697A;
+    border-radius: 10px;
+    position: relative;
+  &>svg{
+    position: absolute;
+    top: 6px;
+    bottom: 6.8px;
+    left: 6px;
+    &>path{
+      width: 8px;
+      height: 6.4px;
+      fill: $color-backgraund-blue;
+    }
+  }
+  &-selected{
+    background-color: $color-checkbox-selected;
+    border: none;
+  }
+}
+
