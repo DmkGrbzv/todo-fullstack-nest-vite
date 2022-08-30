@@ -8,7 +8,7 @@
     display: inline-block;
     height: 20px;
     width: 20px;  
-    border: 2px solid #67697A;
+    border: 2px solid $color-basic-60;
     border-radius: 10px;
     position: relative;
   &>svg{
@@ -19,7 +19,7 @@
     &>path{
       width: 8px;
       height: 6.4px;
-      fill: $color-backgraund-blue;
+      fill: $color-basic-90;
     }
   }
   &-selected{

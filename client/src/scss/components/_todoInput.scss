@@ -1,0 +1,28 @@
+.input-wrapper{
+  @include wrapper-template;
+}
+.label{
+  position: relative;
+  &>input{
+    width: 100%;
+    @include row-template;
+    padding-left: 60px;
+    outline: 1px solid $color-basic-60;
+    color: $color-basic-50;
+    &:focus{
+      color: $color-input-white;
+      background: $color-basic-80;
+      outline: 2px solid#535568;
+    }
+    &:hover{
+      color: $color-input-white;
+    }
+  }
+  &>svg{
+    top: 0px;
+    left: 20px;  
+    width: 20px;
+    height: 20px;
+    position: absolute;
+  }
+}

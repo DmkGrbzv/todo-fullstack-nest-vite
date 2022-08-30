@@ -1,4 +1,6 @@
-@import "abstracts/default";
 @import "abstracts/variables";
+@import "abstracts/mixins.scss";
 @import "./components/app.scss";
 @import "./components/checkbox.scss";
+@import "./components/todoInput.scss";
+@import "./components/todoItem.scss";
