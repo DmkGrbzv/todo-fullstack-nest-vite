@@ -3,6 +3,17 @@ import { defineComponent } from 'vue';
 
   export default defineComponent({
   name: "CheckBox",
+  props:{
+    select:{
+      type:Function,
+      default:null,
+      required:true
+    },
+    selectedValue:{
+      type:Boolean,
+      default:false
+    }
+  },
   components: {
    
   },
@@ -15,10 +26,11 @@ import { defineComponent } from 'vue';
   methods:{
     toggle(value:boolean):void{
       this.isOpen = !value;
+      this.select(this.isOpen);  
     }
   },
   mounted(){
-   
+    this.isOpen = this.selectedValue;
   }
   })
 </script>

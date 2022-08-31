@@ -1,5 +1,6 @@
 .input-wrapper{
   @include wrapper-template;
+  margin-top: 30px;
 }
 .label{
   position: relative;
@@ -7,12 +8,12 @@
     width: 100%;
     @include row-template;
     padding-left: 60px;
-    outline: 1px solid $color-basic-60;
+    border: 1px solid $color-basic-60;
     color: $color-basic-50;
     &:focus{
       color: $color-input-white;
       background: $color-basic-80;
-      outline: 2px solid#535568;
+      border: 2px solid#535568;
     }
     &:hover{
       color: $color-input-white;
