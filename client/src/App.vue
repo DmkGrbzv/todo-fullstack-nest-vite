@@ -2,17 +2,23 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 
+import { mapActions, storeToRefs } from 'pinia';
 import TodoInput from './components/TodoInput.vue';
-import TodoItem from './components/TodoItem.vue';
+import TodoItemList from './components/TodoItemList.vue';
+import { useStore } from './store/todo';
+
+const todoStore = useStore();
+const {getCompletedTasks, getUnCompletedTasks} = storeToRefs(todoStore)
+const {fetchTasks} = mapActions(useStore,["fetchTasks"])
+
 </script>
 
 <template>
   <div class="wrapper">
     <div class="title">To-do list</div>
-    <!-- <HelloWorld msg="Vite + Vue" /> -->
-    <CheckBox/>
     <TodoInput/>
-    <TodoItem/>
+    <TodoItemList/>
+    <!-- <TodoItemList/> -->
   </div>
 </template>
 
