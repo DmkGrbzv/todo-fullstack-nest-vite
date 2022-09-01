@@ -1,21 +1,32 @@
 <script lang="ts">
 import { defineComponent, ToRefs, nextTick } from "vue";
 import CheckBox from '../components/CheckBox.vue';
+import { ITask } from "../interfaces/todo";
 
   export default defineComponent({
   name: "TodoItem",
   props:{
     completed:{
-      type:Boolean,
+      type: Boolean,
       required: true
     },
     text:{
-      type:String,
+      type: String,
       required:true
     },
     idValue:{
-      type:Number,
-      default:0
+      type: String,
+      default: '0'
+    },
+    remove:{
+      type: Function,
+      default: ()=>{},
+      required: true
+    },
+    update:{
+      type: Function,
+      default: ()=>{},
+      required: true
     }
   },
   components: {
@@ -33,8 +44,9 @@ import CheckBox from '../components/CheckBox.vue';
     }
   },
   methods:{
-    getCheckBoxValue(value:boolean){
+    async getCheckBoxValue(value:boolean){
       this.isSelected = value;
+      await this.fetchUpdateTask({text:this.value,completed:this.isSelected,_id:this.idValue}, this.idValue)
     },
     focusEdit(){
       const itemRefValue = (this.$refs.item as HTMLInputElement);
@@ -43,13 +55,19 @@ import CheckBox from '../components/CheckBox.vue';
       },100)
       itemRefValue.focus();
     },
-    removeItem(value:number){
-      console.log(value);
+    async removeItem(value:string){
+      await this.remove(value);
     },
-    async editField(value:boolean){
-      console.log(value);
+    editField(value:boolean){
       this.isEditMode = !value;
-      await this.focusEdit();
+      this.focusEdit();
+    },
+    async fetchUpdateTask(obj:ITask,id:string){
+      if( !( obj.text.length > 0 ) ){
+        this.value = this.text;
+        return
+      }
+      await this.update(obj,id)
     }
   },
   mounted(){
@@ -66,7 +84,7 @@ import CheckBox from '../components/CheckBox.vue';
         <div class="position-absolute">
           <CheckBox :select="getCheckBoxValue" :selectedValue='isSelected'/>
         </div>
-        <input ref="item" type="text" v-model="value" v-show="!isEditMode" :class="{'item__label-done': isSelected}" v-on:focusout="isEditMode = true">
+        <input ref="item" type="text" v-model="value" v-show="!isEditMode" @change="fetchUpdateTask({text:value,completed:isSelected,_id:idValue}, idValue)" :class="{'item__label-done': isSelected}" v-on:focusout="isEditMode = true">
         <p @dblclick="editField(isEditMode)" v-show="isEditMode">{{value}}</p>
         <svg @click.stop="removeItem(idValue)" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M11.5745 0.43434C11.4092 0.26865 11.1848 0.175535 10.9507 0.175535C10.7167 0.175535 10.4922 0.26865 10.3269 0.43434L6.00002 4.75238L1.67313 0.425491C1.50782 0.259802 1.28338 0.166687 1.04932 0.166687C0.815262 0.166687 0.590821 0.259802 0.425504 0.425491C0.0804147 0.770581 0.0804147 1.32803 0.425504 1.67312L4.75239 6.00001L0.425504 10.3269C0.0804147 10.672 0.0804147 11.2294 0.425504 11.5745C0.770593 11.9196 1.32804 11.9196 1.67313 11.5745L6.00002 7.24765L10.3269 11.5745C10.672 11.9196 11.2294 11.9196 11.5745 11.5745C11.9196 11.2294 11.9196 10.672 11.5745 10.3269L7.24765 6.00001L11.5745 1.67312C11.9108 1.33688 11.9108 0.770581 11.5745 0.43434Z" fill="#9799AD"/>
