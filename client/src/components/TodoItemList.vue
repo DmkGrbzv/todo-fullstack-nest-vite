@@ -49,9 +49,7 @@ import {ITask} from "../interfaces/todo";
 <template>
   <div class="list-wrapper">
     <div v-for="item in itemsArray" :key="item._id">
-      <TodoItem :completed='item.completed' 
-        :text='item.text' 
-        :idValue='item._id'
+      <TodoItem 
         :remove ="removeTask"
         :update = 'updateTask'
         :itemData = 'item'
