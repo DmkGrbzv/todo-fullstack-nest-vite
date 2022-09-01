@@ -54,6 +54,7 @@ import {ITask} from "../interfaces/todo";
         :idValue='item._id'
         :remove ="removeTask"
         :update = 'updateTask'
+        :itemData = 'item'
       />
     </div>
   </div>
