@@ -5,9 +5,9 @@ export type TodoDocument = Todo & Document;
 
 @Schema()
 export class Todo {
-  @Prop()
+  @Prop({ required: true })
   text: string;
-  @Prop()
+  @Prop({ default: false })
   completed: boolean;
 }
 
