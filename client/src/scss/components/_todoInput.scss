@@ -15,8 +15,16 @@
       background: $color-basic-80;
       border: 2px solid#535568;
     }
+    &::placeholder{
+      color: $color-basic-50;
+      opacity: 1;
+    }
     &:hover{
       color: $color-input-white;
+      &::placeholder{
+        color: $color-input-white;
+        opacity: 1;
+      }
     }
   }
   &>svg{
