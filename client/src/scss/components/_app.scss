@@ -21,3 +21,45 @@
   text-align: left;
   color: $color-basic-70;
 }
+.label-wrapper{
+  margin-top: 20px;
+  width: 100%;
+  max-width: 820px;
+  height: auto;
+  display: flex;
+  padding: 0 10px;
+  position: relative;
+  &>svg{
+    position: absolute;
+    top: 9.83px;
+    left: 20px;
+    &>path{
+      fill: #4EA2FF;
+    }
+  }
+}
+
+.completed-list-label{
+  height: 29px;
+  width: 114px;
+  border-radius: 4px;
+  padding: 6px 8px 6px 8px;
+  background-color: $color-button-blue;
+  text-align: right;
+  font-family: $font-inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  color:#4EA2FF;
+  justify-content: flex-start;
+}
+
+.vertical-line{
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+  height: 1px;
+  padding: 0 10px;
+  background: $color-basic-80;
+}

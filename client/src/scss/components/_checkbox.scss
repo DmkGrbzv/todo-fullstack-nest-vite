@@ -11,11 +11,11 @@
     border: 2px solid $color-basic-60;
     border-radius: 10px;
     position: relative;
-  &>svg{
-    position: absolute;
-    top: 6px;
-    bottom: 6.8px;
-    left: 6px;
+    &>svg{
+      position: absolute;
+      top: 6px;
+      bottom: 6.8px;
+      left: 6px;
     &>path{
       width: 8px;
       height: 6.4px;
