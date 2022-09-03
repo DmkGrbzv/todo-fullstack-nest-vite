@@ -3,6 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -10,6 +12,10 @@ import { TodosModule } from './todos/todos.module';
     MongooseModule.forRoot(
       'mongodb+srv://DmkGrbzv:dmkgrbzv34521997@cluster0.lrzndoc.mongodb.net/todos?retryWrites=true&w=majority',
     ),
+    ServeStaticModule.forRoot({
+      rootPath: `${join(__dirname, '../../', 'client/dist')}`,
+      exclude: ['/'],
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

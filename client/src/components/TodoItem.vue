@@ -65,12 +65,12 @@ import { ITask } from "../interfaces/todo";
     }
   },
   computed:{
-    isSelectedValue(){
+    isSelectedValue():boolean|undefined{
       if(this.itemData){
        return this.isSelected = this.itemData.completed;
       }
     },
-    isChangedTextValue(){
+    isChangedTextValue():string{
       if(this.itemData.text && !this.value.length){
        return this.value = this.itemData.text;
       }
