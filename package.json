@@ -24,6 +24,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "pinia": "^2.0.21",
+    "vue": "^3.2.37",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mongoose": "^9.2.0",
