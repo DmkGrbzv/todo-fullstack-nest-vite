@@ -18,7 +18,7 @@ export const useStore = defineStore('todoStore', {
   actions: {
     async fetchTasks(completed?: boolean) {
       const response = await axios.get<[ITask]>(
-        `http://localhost:3000/todos/getAll/${completed}`,
+        `http://todo-fullstack-nest-vite-vue.herokuapp.com/todos/getAll/${completed}`,
       );
       if (completed) {
         this.tasksListCompleted = response.data;
@@ -29,7 +29,9 @@ export const useStore = defineStore('todoStore', {
     },
     async fetchDeleteTasks(id: string) {
       await axios
-        .delete<ITask>(`http://localhost:3000/todos/delete/${id}`)
+        .delete<ITask>(
+          `http://todo-fullstack-nest-vite-vue.herokuapp.com/todos/delete/${id}`,
+        )
         .then(() => {
           this.fetchTasks(true);
           this.fetchTasks(false);
@@ -38,7 +40,10 @@ export const useStore = defineStore('todoStore', {
     },
     async fetchUpdateTasks(prop: ITask, id: string) {
       await axios
-        .patch<ITask>(`http://localhost:3000/todos/update/${id}`, prop)
+        .patch<ITask>(
+          `http://todo-fullstack-nest-vite-vue.herokuapp.com/todos/update/${id}`,
+          prop,
+        )
         .then(() => {
           this.fetchTasks(true);
           this.fetchTasks(false);
@@ -47,7 +52,10 @@ export const useStore = defineStore('todoStore', {
     },
     async fetchCreateTasks(prop: ITask) {
       await axios
-        .post<ITask>(`http://localhost:3000/todos/create`, prop)
+        .post<ITask>(
+          `http://todo-fullstack-nest-vite-vue.herokuapp.com/todos/create`,
+          prop,
+        )
         .then(() => {
           this.fetchTasks(true);
           this.fetchTasks(false);
