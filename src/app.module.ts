@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -15,6 +16,9 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: `${join(__dirname, '../../', 'client/dist')}`,
       exclude: ['/'],
+    }),
+    ConfigModule.forRoot({
+      envFilePath: '.env',
     }),
   ],
   controllers: [AppController],
