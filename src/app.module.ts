@@ -14,11 +14,11 @@ import { ConfigModule } from '@nestjs/config';
       'mongodb+srv://DmkGrbzv:dmkgrbzv34521997@cluster0.lrzndoc.mongodb.net/todos?retryWrites=true&w=majority',
     ),
     ServeStaticModule.forRoot({
-      rootPath: `${join(__dirname, '../../', 'client/dist')}`,
+      rootPath: `.${join(__dirname, '../../', 'client/dist')}`,
       exclude: ['/'],
     }),
     ConfigModule.forRoot({
-      envFilePath: '.env',
+      envFilePath: `${process.env.NODE_ENV}`,
     }),
   ],
   controllers: [AppController],
