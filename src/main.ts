@@ -12,7 +12,6 @@ async function bootstrap() {
     cors: true,
   });
   app.setGlobalPrefix('/*');
-
   await app.listen(port);
 }
 bootstrap();
